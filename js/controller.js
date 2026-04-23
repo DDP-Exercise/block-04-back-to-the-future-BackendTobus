@@ -1,4 +1,22 @@
 "use strict";
+import {timeModel} from "./model.time.js";
+import {digitalView} from "./view.digital.js";
+import {analogueView} from "./view.analagoue.js";
+
+function init() {
+    let time = timeModel.getCurrentTime();
+    analogueView.init(time);
+    digitalView.init(time);
+}
+
+function updateTime()
+{
+    let time = timeModel.getCurrentTime();
+    analogueView.update(time);
+    digitalView.update(time);
+}
+init();
+setInterval(updateTime, 1000);
 /*******************************************************
  *     Back to the Future - 100p
  *
@@ -34,4 +52,4 @@
  *******************************************************/
 
 // HINT:
-// setInterval(functionName, 1000); will call functionName() every 1000 miliseconds.
+// setInterval(functionName, 1000); will call functionName() every 1000 miliseconds
